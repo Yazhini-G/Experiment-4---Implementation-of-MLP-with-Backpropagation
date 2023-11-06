@@ -122,7 +122,7 @@ Normalize our dataset.
 Developed by : Yazhini G
 ref no : 212222220060
 
-# Include necessary libraries
+## Include necessary libraries
 import pandas as pd
 import sklearn
 from sklearn import preprocessing
@@ -136,25 +136,25 @@ df.head
 
 names = ['sepal-length','sepal-width','petal-length','petal-width','Class']
 
-# Take first 4 columns ans assign them to variable "X"
+## Take first 4 columns ans assign them to variable "X"
 X = df.iloc[:,0:4]
 # Take first 5th columns and assign them to variable "Y"
 Y = df.select_dtypes(include=[object])
 X.head()
 Y.head()
 
-# Y contains all categories or classes
+## Y contains all categories or classes
 Y.species.unique()
 
-# Transforming categorial into numerical values
+## Transforming categorial into numerical values
 le = preprocessing.LabelEncoder()
 Y = Y.apply(le.fit_transform)
 Y.head()
 
-# Train and test split
+## Train and test split
 X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size = 0.20)
 
-# Feature Scaling
+## Feature Scaling
 scaler = StandardScaler() 
 scaler.fit(X_train)
 X_train = scaler.transform(X_train)
@@ -164,7 +164,7 @@ mlp.fit(X_train,Y_train.values.ravel())
 predictions = mlp.predict(X_test)
 print(predictions)
 
-# Evaluation of algorithm performance in classifying flowers
+## Evaluation of algorithm performance in classifying flowers
 print(confusion_matrix(Y_test,predictions))
 print(classification_report(Y_test,predictions))
 
